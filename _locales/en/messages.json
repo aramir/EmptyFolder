@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "Empty Folder"
+  },
+  "extensionDescription": {
+    "message": "Adds a keyboard action (Ctrl+Del) and a folder context menu to delete all messages in a folder"
+  },
+  "empty-folder": {
+    "message": "Empty..."
+  }
+}

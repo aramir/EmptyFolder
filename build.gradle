@@ -1,0 +1,9 @@
+task build(type: Zip) {
+	from '/'
+	include '*.js'
+	include '*.json'
+	include 'content/*'
+	include '_locales/*'
+	archiveName 'EmptyFolder.zip'
+	destinationDir(file('/dist/'))
+}

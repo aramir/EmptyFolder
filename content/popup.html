@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Popup</title>
+	<script src="popup.js"></script>
+	<style type="text/css">
+    body {
+      background-color: #f0f0f0;
+    }
+    input[type=button] {
+      border: 1px solid #aeaeae;
+			border-radius: 4px;
+			padding: 4px 8px 4px 8px;
+			min-width: 80px;
+			font-size: 9pt;
+    }
+		input[type=button].ok {
+      background-color: #0078d7;
+			border-color: #0078d7;
+			color: #fff;
+    }
+    input[type=button].ok:hover {
+      background-color: #0066b7;
+      border-color: #0066b7;
+    }
+    input[type=button].cancel {
+      background-color: #d1d1d1;
+			color: #000;
+    }
+    input[type=button].cancel:hover {
+      background-color: #c8c8c8;
+    }
+    #content {
+			font-size: 10pt;
+		}
+		#content img {
+			float: left;
+			margin: 0 16px 0 4px;
+		}
+    #content p {
+      padding-top: 6px;
+    }
+		#controls {
+			width: 100%;
+		}
+    #controls {
+			margin-top: 65px;
+		}
+    #controls input {
+			float: right;
+			margin: 0 4px 0 4px;
+		}
+  </style>
+</head>
+<body>
+	<div id="content">
+		<img src="confirm.png" width="48" height="48">
+		<p>
+			Are you sure you want to empty this folder?
+			<br>
+			All messages will be deleted.
+		</p>
+	</div>
+	<div id="controls">
+		<input id="button_cancel" type="button" class="cancel" data="cancel" value="Cancel">
+		<input id="button_ok" type="button" class="ok" data="ok" value="Empty Folder">
+	</div>
+</body>
+</html>

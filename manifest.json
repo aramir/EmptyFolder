@@ -1,0 +1,32 @@
+{
+  "default_locale": "en",
+  "manifest_version": 2,
+  "name": "__MSG_extensionName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "1",
+  "applications": {
+    "gecko": {
+      "id": "emptyfolder@extensions.thunderbird.net",
+      "strict_min_version": "76.0a1"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "commands": {
+    "empty-folder": {
+      "suggested_key": {
+        "default": "Ctrl+Delete"
+      },
+      "description": "Delete all messages in the current folder"
+    }
+  },
+  "permissions": [
+    "menus",
+    "accountsRead",
+    "messagesRead",
+    "messagesDelete"
+  ]
+}
