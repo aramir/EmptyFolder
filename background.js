@@ -12,12 +12,22 @@ browser.menus.create({
 browser.menus.onShown.addListener((info) => {
   let folder = info.selectedFolder;
   // console.log("Selected Folder", folder)
-  messenger.messages.list(folder).then(
-    function(r) {
-      browser.menus.update("empty-folder", { enabled: r.messages.length > 0 });
-      browser.menus.refresh();
-    }
-  );
+  if (folder.type === "trash") {
+    console.log("Trash")
+    //hiding for trash folder
+    browser.menus.update("empty-folder", { visible: false });
+    browser.menus.refresh();
+  } else {
+    console.log("Not Trash")
+    //showing for all others, but disabling if no messages in folder
+    browser.menus.update("empty-folder", { visible: true });
+    messenger.messages.list(folder).then(
+      function(r) {
+        browser.menus.update("empty-folder", { enabled: r.messages.length > 0 });
+        browser.menus.refresh();
+      }
+    );
+  }
 });
 
 browser.commands.onCommand.addListener((command) => {
