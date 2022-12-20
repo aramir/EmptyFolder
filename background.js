@@ -13,12 +13,10 @@ browser.menus.onShown.addListener((info) => {
   let folder = info.selectedFolder;
   // console.log("Selected Folder", folder)
   if (folder.type === "trash") {
-    console.log("Trash")
     //hiding for trash folder
     browser.menus.update("empty-folder", { visible: false });
     browser.menus.refresh();
   } else {
-    console.log("Not Trash")
     //showing for all others, but disabling if no messages in folder
     browser.menus.update("empty-folder", { visible: true });
     messenger.messages.list(folder).then(
@@ -35,7 +33,7 @@ browser.commands.onCommand.addListener((command) => {
   if (command === "empty-folder") {
     messenger.mailTabs.getCurrent().then(
       function(mt) {
-        if (mt) {
+        if (mt && mt.displayedFolder.type !== "trash") {
           emptyFolder(mt.displayedFolder);
         }
       }
