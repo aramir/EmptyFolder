@@ -11,8 +11,8 @@ browser.menus.create({
 
 browser.menus.onShown.addListener((info) => {
   let folder = info.selectedFolder;
-  // console.log("Selected Folder", folder)
-  if (folder.type === "trash") {
+  console.log("Selected Folder", folder)
+  if (folder == undefined || folder.type === "trash") {
     //hiding for trash folder
     browser.menus.update("empty-folder", { visible: false });
     browser.menus.refresh();
@@ -58,6 +58,7 @@ async function confirm() {
   let window = await messenger.windows.create({
       url: "content/popup.html",
       titlePreface: "Empty Folder - ",
+      allowScriptsToClose: true,
       type: "popup",
       height: 100,
       width: 370
