@@ -11,7 +11,7 @@ browser.menus.create({
 
 browser.menus.onShown.addListener((info) => {
   let folder = info.selectedFolder;
-  console.log("Selected Folder", folder)
+  //console.log("Selected Folder", folder)
   if (folder == undefined || folder.type === "trash") {
     //hiding for trash folder
     browser.menus.update("empty-folder", { visible: false });
@@ -44,14 +44,22 @@ browser.commands.onCommand.addListener((command) => {
 async function emptyFolder(folder) {
   if (await confirm()) {
     let page = await messenger.messages.list(folder);
-    if (page.messages.length > 0)
+    if (page.messages.length > 0) {
+      page.messages.forEach(m => markRead(m));
       messenger.messages.delete(page.messages.map(m => m.id));
+    }
     while (page.id) {
       page = await messenger.messages.continueList(page.id);
-      if (page.messages.length > 0)
+      if (page.messages.length > 0) {
+        page.messages.forEach(m => markRead(m));
         messenger.messages.delete(page.messages.map(m => m.id));
+      }
     }
   }
+}
+
+function markRead(message) {
+  
 }
 
 async function confirm() {
